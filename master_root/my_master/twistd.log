@@ -1,0 +1,197 @@
+2025-03-13 02:48:16-0400 [-] Loading buildbot.tac...
+2025-03-13 02:48:16-0400 [-] Loaded.
+2025-03-13 02:48:16-0400 [-] twistd 24.11.0 (/root/buildbot/master_root/sandbox/bin/python3 3.12.5) starting up.
+2025-03-13 02:48:16-0400 [-] reactor class: twisted.internet.epollreactor.EPollReactor.
+2025-03-13 02:48:16-0400 [-] Starting BuildMaster -- buildbot.version: 4.2.1
+2025-03-13 02:48:16-0400 [-] Loading configuration from '/root/buildbot/master_root/my_master/master.cfg'
+2025-03-13 02:48:16-0400 [-] Setting up database with URL 'sqlite:/state.sqlite'
+2025-03-13 02:48:16-0400 [-] setting database journal mode to 'wal'
+2025-03-13 02:48:17-0400 [-] adding 1 new change_sources, removing 0
+2025-03-13 02:48:17-0400 [-] gitpoller: using workdir '/root/buildbot/master_root/my_master/gitpoller-workdir'
+2025-03-13 02:48:17-0400 [-] adding 1 new builders, removing 0
+2025-03-13 02:48:17-0400 [-] adding 2 new schedulers, removing 0
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'waterfall_view'
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'console_view'
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'grid_view'
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'waterfall_view'
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'console_view'
+2025-03-13 02:48:17-0400 [-] initializing www plugin 'grid_view'
+2025-03-13 02:48:17-0400 [-] BuildbotSite starting on 8010
+2025-03-13 02:48:17-0400 [-] Starting factory <buildbot.www.service.BuildbotSite object at 0x7f1f776e7920>
+2025-03-13 02:48:17-0400 [-] adding 1 new workers, removing 0
+2025-03-13 02:48:18-0400 [-] PBServerFactory starting on 9989
+2025-03-13 02:48:18-0400 [-] Starting factory <twisted.spread.pb.PBServerFactory object at 0x7f1f76b0d1f0>
+2025-03-13 02:48:18-0400 [-] BuildMaster is running
+2025-03-13 02:53:17-0400 [-] <buildbot.changes.gitpoller.GitPoller object at 0x7f1f783a4b60>: while polling for changes
+	Traceback (most recent call last):
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 369, in poll
+	    yield self._checkGitFeatures()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 231, in _checkGitFeatures
+	    stdout = yield self._dovccmd('--version', [])
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2017, in _inlineCallbacks
+	    result = context.run(gen.send, result)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 644, in _dovccmd
+	    res = await runprocess.run_process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 1191, in __iter__
+	    result.raiseException()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 455, in raiseException
+	    raise self.value.with_traceback(self.tb)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 137, in start
+	    self._start_command()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 154, in _start_command
+	    self.process = self._reactor.spawnProcess(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/posixbase.py", line 194, in spawnProcess
+	    return process.Process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 820, in __init__
+	    self._fork(path, uid, gid, executable, args, environment, fdmap=fdmap)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 401, in _fork
+	    if self._trySpawnInsteadOfFork(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 890, in _trySpawnInsteadOfFork
+	    self.pid = os.posix_spawnp(
+	builtins.FileNotFoundError: [Errno 2] No such file or directory: 'git'
+	
+2025-03-13 02:57:45-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=60220)
+2025-03-13 02:57:45-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=60226)
+2025-03-13 02:58:17-0400 [-] <buildbot.changes.gitpoller.GitPoller object at 0x7f1f783a4b60>: while polling for changes
+	Traceback (most recent call last):
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 369, in poll
+	    yield self._checkGitFeatures()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 231, in _checkGitFeatures
+	    stdout = yield self._dovccmd('--version', [])
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2017, in _inlineCallbacks
+	    result = context.run(gen.send, result)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 644, in _dovccmd
+	    res = await runprocess.run_process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 1191, in __iter__
+	    result.raiseException()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 455, in raiseException
+	    raise self.value.with_traceback(self.tb)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 137, in start
+	    self._start_command()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 154, in _start_command
+	    self.process = self._reactor.spawnProcess(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/posixbase.py", line 194, in spawnProcess
+	    return process.Process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 820, in __init__
+	    self._fork(path, uid, gid, executable, args, environment, fdmap=fdmap)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 401, in _fork
+	    if self._trySpawnInsteadOfFork(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 890, in _trySpawnInsteadOfFork
+	    self.pid = os.posix_spawnp(
+	builtins.FileNotFoundError: [Errno 2] No such file or directory: 'git'
+	
+2025-03-13 03:00:17-0400 [Broker,0,127.0.0.1] worker 'example-worker' attaching from IPv4Address(type='TCP', host='127.0.0.1', port=41036)
+2025-03-13 03:00:17-0400 [Broker,0,127.0.0.1] Got workerinfo from 'example-worker'
+2025-03-13 03:00:17-0400 [-] bot attached
+2025-03-13 03:00:17-0400 [Broker,0,127.0.0.1] Worker example-worker attached to runtests
+2025-03-13 03:02:28-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=52362)
+2025-03-13 03:02:34-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=52352)
+2025-03-13 03:02:37-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=52344)
+2025-03-13 03:02:37-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=52354)
+2025-03-13 03:02:37-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=52330)
+2025-03-13 03:03:17-0400 [-] <buildbot.changes.gitpoller.GitPoller object at 0x7f1f783a4b60>: while polling for changes
+	Traceback (most recent call last):
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 369, in poll
+	    yield self._checkGitFeatures()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 231, in _checkGitFeatures
+	    stdout = yield self._dovccmd('--version', [])
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2017, in _inlineCallbacks
+	    result = context.run(gen.send, result)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 644, in _dovccmd
+	    res = await runprocess.run_process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 1191, in __iter__
+	    result.raiseException()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 455, in raiseException
+	    raise self.value.with_traceback(self.tb)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 137, in start
+	    self._start_command()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 154, in _start_command
+	    self.process = self._reactor.spawnProcess(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/posixbase.py", line 194, in spawnProcess
+	    return process.Process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 820, in __init__
+	    self._fork(path, uid, gid, executable, args, environment, fdmap=fdmap)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 401, in _fork
+	    if self._trySpawnInsteadOfFork(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 890, in _trySpawnInsteadOfFork
+	    self.pid = os.posix_spawnp(
+	builtins.FileNotFoundError: [Errno 2] No such file or directory: 'git'
+	
+2025-03-13 03:08:17-0400 [-] <buildbot.changes.gitpoller.GitPoller object at 0x7f1f783a4b60>: while polling for changes
+	Traceback (most recent call last):
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 369, in poll
+	    yield self._checkGitFeatures()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2013, in _inlineCallbacks
+	    result = context.run(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 467, in throwExceptionIntoGenerator
+	    return g.throw(self.value.with_traceback(self.tb))
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 231, in _checkGitFeatures
+	    stdout = yield self._dovccmd('--version', [])
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 2017, in _inlineCallbacks
+	    result = context.run(gen.send, result)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/changes/gitpoller.py", line 644, in _dovccmd
+	    res = await runprocess.run_process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/defer.py", line 1191, in __iter__
+	    result.raiseException()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/python/failure.py", line 455, in raiseException
+	    raise self.value.with_traceback(self.tb)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 137, in start
+	    self._start_command()
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/buildbot/util/runprocess.py", line 154, in _start_command
+	    self.process = self._reactor.spawnProcess(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/posixbase.py", line 194, in spawnProcess
+	    return process.Process(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 820, in __init__
+	    self._fork(path, uid, gid, executable, args, environment, fdmap=fdmap)
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 401, in _fork
+	    if self._trySpawnInsteadOfFork(
+	  File "/root/buildbot/master_root/sandbox/lib64/python3.12/site-packages/twisted/internet/process.py", line 890, in _trySpawnInsteadOfFork
+	    self.pid = os.posix_spawnp(
+	builtins.FileNotFoundError: [Errno 2] No such file or directory: 'git'
+	
+2025-03-13 03:09:07-0400 [Broker,0,127.0.0.1] Worker.detached(example-worker)
+2025-03-13 03:09:07-0400 [Broker,0,127.0.0.1] releaseLocks(<Worker 'example-worker'>): []
+2025-03-13 03:09:07-0400 [-] Worker example-worker detached from runtests
+2025-03-13 03:09:20-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=42290)
+2025-03-13 03:09:20-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=42276)
+2025-03-13 03:09:23-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=42286)
+2025-03-13 03:09:23-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=42288)
+2025-03-13 03:09:23-0400 [-] Timing out client: IPv4Address(type='TCP', host='127.0.0.1', port=42292)
+2025-03-13 03:09:57-0400 [-] Initiating clean shutdown
+2025-03-13 03:09:57-0400 [-] No running jobs, starting shutdown immediately
+2025-03-13 03:09:57-0400 [-] doing housekeeping for master 1 devtesting1.hpc.temple.edu:/root/buildbot/master_root/my_master
+2025-03-13 03:09:57-0400 [-] (TCP Port 8010 Closed)
+2025-03-13 03:09:57-0400 [-] Stopping factory <buildbot.www.service.BuildbotSite object at 0x7f1f776e7920>
+2025-03-13 03:09:57-0400 [-] (TCP Port 9989 Closed)
+2025-03-13 03:09:57-0400 [-] Stopping factory <twisted.spread.pb.PBServerFactory object at 0x7f1f76b0d1f0>
+2025-03-13 03:09:57-0400 [-] BuildMaster is stopped
+2025-03-13 03:09:57-0400 [-] Main loop terminated.
+2025-03-13 03:09:57-0400 [-] Server Shut Down.
