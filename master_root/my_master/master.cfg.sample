@@ -2,7 +2,6 @@
 # ex: set filetype=python:
 
 from buildbot.plugins import *
-from buildbot.scheduler import Try_Userpass 
 
 # This is a sample buildmaster config file. It must be installed as
 # 'master.cfg' in your buildmaster's base directory.
@@ -16,9 +15,7 @@ c = BuildmasterConfig = {}
 # The 'workers' list defines the set of recognized workers. Each element is
 # a Worker object, specifying a unique worker name and password.  The same
 # worker name and password must be configured on the worker.
-c['workers'] = [worker.Worker("example-worker", "pass"),
-		worker.Worker("c01","password")]
-#c['workers'] = [worker.Worker('c01', 'password')]
+c['workers'] = [worker.Worker("example-worker", "pass")]
 
 # 'protocols' contains information about protocols which master will use for
 # communicating with workers. You must define at least 'port' option that workers
@@ -43,38 +40,17 @@ c['change_source'].append(changes.GitPoller(
 # Configure the Schedulers, which decide how to react to incoming changes.  In this
 # case, just kick off a 'runtests' build
 
-c['schedulers']=[]
+c['schedulers'] = []
 c['schedulers'].append(schedulers.SingleBranchScheduler(
-    name="all-builder1",
-    change_filter=util.ChangeFilter(branch='master'),
-    treeStableTimer=None,
-    builderNames=["builder1"]
-))
-#c['schedulers'].append(schedulers.Periodic(
-#    name="daily",
-#    builderNames=["builder1"],
-#    periodicBuildTimer=120  # 2 minutes
-#))
-c['schedulers'].append(schedulers.ForceScheduler(
-    name="Run1",
-    builderNames=["builder1"]
-))
-
-c['schedulers'].append(schedulers.SingleBranchScheduler(
-                            name="all-runtests",
+                            name="all",
                             change_filter=util.ChangeFilter(branch='master'),
                             treeStableTimer=None,
                             builderNames=["runtests"]))
 c['schedulers'].append(schedulers.ForceScheduler(
                             name="force",
                             builderNames=["runtests"]))
-c['schedulers'].append(Try_Userpass(
-                                    name='try',
-                                    builderNames=['runtests'],
-                                    port=5555,
-                                    userpass=[('sampleuser','samplepass')]))
 
-####### BUILDERSbuildbot create-master my_master
+####### BUILDERS
 
 # The 'builders' list defines the Builders, which tell Buildbot how to perform a build:
 # what steps, and which workers can execute them.  Note that any particular build will
@@ -87,17 +63,10 @@ factory.addStep(steps.Git(repourl='https://github.com/buildbot/hello-world.git',
 factory.addStep(steps.ShellCommand(command=["trial", "hello"],
                                    env={"PYTHONPATH": "."}))
 
-c['builders'] = [
-    util.BuilderConfig(
-        name="builder1",
-        workernames=["example-worker","c01"],
-        factory=factory
-    )
-]
-
+c['builders'] = []
 c['builders'].append(
     util.BuilderConfig(name="runtests",
-      workernames=["c01"],
+      workernames=["example-worker"],
       factory=factory))
 
 ####### BUILDBOT SERVICES
@@ -105,18 +74,16 @@ c['builders'].append(
 # 'services' is a list of BuildbotService items like reporter targets. The
 # status of each build will be pushed to these targets. buildbot/reporters/*.py
 # has a variety to choose from, like IRC bots.
-#c['services'].append(reporters.IRC(host="irc.freenode.net", nick="bbtest",
-#                                   channels=["#buildbot-test"]))
+
 c['services'] = []
-#c['services'].append(reporters.IRC(host="irc.freenode.net", nick="bb-test", channels=["#buildbot-test"]))
 
 ####### PROJECT IDENTITY
 
 # the 'title' string will appear at the top of this buildbot installation's
 # home pages (linked to the 'titleURL').
 
-c['title'] = "BBot For LAMMPS"
-c['titleURL'] = "https://github.com/toucheLos/BuildBot-For-LAMMPS/"
+c['title'] = "Hello World CI"
+c['titleURL'] = "https://buildbot.github.io/hello-world/"
 
 # the 'buildbotURL' string should point to the location where the buildbot's
 # internal web server is visible. This typically uses the port number set in
@@ -129,16 +96,6 @@ c['buildbotURL'] = "http://localhost:8010/"
 c['www'] = dict(port=8010,
                 plugins=dict(waterfall_view={}, console_view={}, grid_view={}))
 
-c['www']['authz'] = util.Authz(
-        allowRules = [
-            util.AnyEndpointMatcher(role="admins")
-        ],
-        roleMatchers = [
-            util.RolesFromUsername(roles=['admins'], usernames=['Carlos'])
-        ]
-)
-c['www']['auth'] = util.UserPasswordAuth([('Carlos','Password1')])
-
 ####### DB URL
 
 c['db'] = {
@@ -148,4 +105,3 @@ c['db'] = {
     # http://docs.buildbot.net/current/manual/configuration/global.html#database-specification
     'db_url' : "sqlite:///state.sqlite",
 }
-
